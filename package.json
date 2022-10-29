@@ -3,7 +3,7 @@
   "displayName": "Autocode",
   "publisher": "AtharShakeel",
   "description": "An extension that provides user with ready to use code snippets, thereby reducing development time",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.72.0"
   },
