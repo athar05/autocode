@@ -85,5 +85,399 @@
       "}"
     ],
     "description": "Creats an async function"
+  },
+  //inbuilt functions
+  "setTimeout": {
+    "prefix": "create settimeout",
+    "body": ["$1setTimeout(() => {", "  $2", "}, ${3:timeout});"],
+    "description": "Creates a setTimeout"
+  },
+  "setInterval": {
+    "prefix": "create setinterval",
+    "body": ["$1setInterval(() => {", "  $2", "}, ${3:timeout});"],
+    "description": "Creates a setInterval"
+  },
+  "console log": {
+    "prefix": "create log",
+    "body": ["console.log($1)"],
+    "description": "Creates a log of any data in the console"
+  },
+
+  //apis
+  "axios": {
+    "prefix": "create axios",
+    "body": [
+      "axios.${1|get, post, put, delete|}(\"${2:url}\")",
+      ".then((res)=> console.log(res))",
+      ".catch(e=> console.log(e))"
+    ],
+    "description": "Creates an axios call"
+  },
+  "try catch": {
+    "prefix": "create trycatch",
+    "body": ["try {", "  $1", "} catch (${2:error}) {", "  $3", "}"],
+    "description": "try catch"
+  },
+  "fetch": {
+    "prefix": "create fetch",
+    "body": [
+      "fetch(\"${1:url}\")",
+      ".then((res)=> console.log(res.data))",
+      ".catch(e=> console.log(e))"
+    ],
+    "description": "Creates a fetch call"
+  },
+
+  //hooks
+  "React useState": {
+    "prefix": "create usestate",
+    "body": [
+      // "const [${TM_SELECTED_TEXT/^.*\\s+(.)(.*)$/$1$2, set${1:/upcase}$2/}] = React.useState($0)",
+      "const [$1, ${1/(.)(.*)/set${1:/upcase}$2/}] =useState($0)"
+    ],
+    "description": "Creates a useState hook"
+  },
+  "React useReducer": {
+    "prefix": "create usereducer",
+    "body": [
+      "const ${2:initialArg} = {};",
+      "const [state, dispatch] = useReducer(${1:reducer}, ${2:initialArg}, ${3:init})"
+    ],
+    "description": "Creates a useReducer hook"
+  },
+
+  "React useEffect": {
+    "prefix": "create useeffect",
+    "body": ["useEffect(() => {", "  $1", "}, [${2:}])", ""],
+    "description": "React useEffect"
+  },
+  "React useContext": {
+    "prefix": "create usecontext",
+    "body": ["const ${1:value} = useContext(${2:MyContext});", ""],
+    "description": "Creates useContext hook"
+  },
+  "React Context Provider": {
+    "prefix": "create context provider",
+    "body": [
+      "const ${1:Context} = React.createContext($2);",
+      "<${1:Context}.Provider value={${3:value}}>",
+      "</${1:Context}.Provider>"
+    ],
+    "description": "Creates Context Provider"
+  },
+  "React useRef": {
+    "prefix": "create useref",
+    "body": ["const ${1:variableName} = useRef(${2:})"],
+    "description": "Creates useRef hook"
+  },
+  "React useMemo": {
+    "prefix": "create usememo",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => computeExpensiveValue($2), [$3]);"
+    ],
+    "description": "Creates useMemo hook"
+  },
+  "React useCallback": {
+    "prefix": "create usecallback",
+    "body": [
+      "const ${1:memoizedCallback} = useCallback(",
+      "  () => {",
+      "    ${2:doSomething}($3);",
+      "  },",
+      "  [$4],",
+      ");"
+    ],
+    "description": "Create useCallback hook"
+  },
+  //react functional components
+
+  "react function component": {
+    "prefix": "create react function component",
+    "body": [
+      "import React from 'react';",
+      "",
+      "function ${TM_FILENAME_BASE}() {",
+      "return (",
+      "<div> ",
+      "  $1",
+      "</div>",
+      ")",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE}"
+    ],
+    "description": "react function component"
+  },
+  "react arrow function component": {
+    "prefix": "create react arrow function component",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const $TM_FILENAME_BASE = ()=> {",
+      "return (",
+      "<div> ",
+      "  $1",
+      "</div>",
+      ")",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE"
+    ],
+    "description": "Creates react arrow function component"
+  },
+
+  //JSX components
+  "Button component": {
+    "prefix": "create button",
+    "body": ["<button className=\"${1:}\">${2:Button}</button>"],
+    "description": "Creates button component"
+  },
+  "Button component with onClick": {
+    "prefix": "create button with onclick",
+    "body": [
+      "<button className=\"${1:}\" onClick={${2:}}>${3:Button}</button>"
+    ],
+    "description": "Creates button component with onClick"
+  },
+  "Div component": {
+    "prefix": "create div",
+    "body": ["<div className=\"${1:}\">$2</div>"],
+    "description": "Create div component"
+  },
+  "Para component": {
+    "prefix": "create para",
+    "body": ["<p className=\"${1:}\">$2</p>"],
+    "description": "Creates para component"
+  },
+  "Ordered list": {
+    "prefix": "create ordered list",
+    "body": ["<ol> ", "<li>$1 </li>", "<li>$2 </li>", "<li>$3 </li>", "</ol>"],
+    "description": "Creates an ordered list"
+  },
+  "Unordered list": {
+    "prefix": "create unordered list",
+    "body": ["<ul> ", "<li>$1 </li>", "<li>$2 </li>", "<li>$3 </li>", "</ul>"],
+    "description": "Creates unordered list"
+  },
+  "Form": {
+    "prefix": "create form",
+    "body": [
+      "<form onSubmit={${1:handleSubmit}}>",
+      "<label for=\"$2\">",
+      "    ${3:Name}:",
+      "    <input type=\"${3:text}\" onChange={${5:changeHandler}} value=\"$6\" />",
+      "</label>",
+      "<button type=\"submit\" onClick={${7:clickhandler}}>Button</button>",
+      "</form>"
+    ],
+    "description": "Creates a form"
+  },
+  "Image component": {
+    "prefix": "create image",
+    "body": ["<img src=\"$1\"/>"],
+    "description": "Creates an image component"
+  },
+  "Span component": {
+    "prefix": "create span",
+    "body": ["<span className=\"$1\">$2</span>"],
+    "description": "Span component"
+  },
+
+  //higher order functions
+  "array map": {
+    "prefix": "create array.map",
+    "body": [
+      "${1:array}.map((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.map function"
+  },
+  "array filter": {
+    "prefix": "create array.filter",
+    "body": [
+      "${1:array}.filter((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.filter function"
+  },
+  "array some": {
+    "prefix": "create array.some",
+    "body": [
+      "${1:array}.some((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return $5",
+      "})"
+    ],
+    "description": "Creates an array.some function"
+  },
+  "array every": {
+    "prefix": "create array.every",
+    "body": [
+      "${1:array}.every((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.every function"
+  },
+  "array find": {
+    "prefix": "create array.find",
+    "body": [
+      "${1:array}.find((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.find function"
+  },
+  "array findIndex": {
+    "prefix": "create array.findIndex",
+    "body": [
+      "${1:array}.findIndex((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.findIndex function"
+  },
+  "array forEach": {
+    "prefix": "create array.forEach",
+    "body": [
+      "${1:array}.forEach((${2:item}, ${3:index}, ${4:arr})=> {",
+      "return ${5}",
+      "})"
+    ],
+    "description": "Creates an array.forEach function"
+  },
+  "array reduce": {
+    "prefix": "create array.reduce",
+    "body": [
+      "${1:array}.reduce((${2:accumulator}, ${3:currentValue}, ${4:currentIndex}, ${5:array}) => {",
+      "",
+      "}, ${6:initialValue});"
+    ],
+    "description": "Creates an array.reduce function"
+  },
+  "array sort": {
+    "prefix": "create array.sort",
+    "body": [
+      "${1:array}.sort((${2:firstElement}, ${3:secondElement})=> {",
+      "return ${4}",
+      "})"
+    ],
+    "description": "Creates an array.sort function"
+  },
+  "array includes": {
+    "prefix": "create array.includes",
+    "body": [
+      "${1:array}.includes((${2:searchElement}, ${3:formIndex})=> {",
+      "return ${4}",
+      "})"
+    ],
+    "description": "Creates an array.includes function"
+  },
+  //loops
+  "for loop": {
+    "prefix": "create for loop",
+    "body": [
+      "for (let ${1:condition1}; ${2:condition2}; ${3:condition3}) {",
+      "$4",
+      "}"
+    ],
+    "description": "Creates a for loop"
+  },
+  "for of loop": {
+    "prefix": "create for of loop",
+    "body": ["for (let ${1:variable} of ${2:iterable}) {", "$3", "}"],
+    "description": "Creates a for of loop"
+  },
+  "for in loop": {
+    "prefix": "create for in loop",
+    "body": ["for (let ${1:variable} in ${2:iterable}) {", "$3", "}"],
+    "description": "Creates a for in loop"
+  },
+  "while loop": {
+    "prefix": "create while loop",
+    "body": ["while (${1:condition}) {", "$2", "}"],
+    "description": "while loop"
+  },
+  "switch statement": {
+    "prefix": "create switch",
+    "body": [
+      "switch(${1:expression}) {",
+      "  case ${2:condition}:",
+      "",
+      "    break;",
+      "  case ${3:condition}:",
+      "",
+      "    break;",
+      "  default:",
+      "    break;",
+      "}"
+    ],
+    "description": "Creates a switch statement"
+  },
+
+  //conditions
+  "if condition": {
+    "prefix": "create if",
+    "body": ["if (${1:condition}) {", "  $2", "}"],
+    "description": "Creates an if condition"
+  },
+  "if else condition": {
+    "prefix": "create ifelse",
+    "body": ["if (${1:condition}) {", "  $2", "} else {", " $3", "}"],
+    "description": "Creates an if else condition"
+  },
+  "ternary operator": {
+    "prefix": "create ternary ",
+    "body": ["(${1:condition}) ? ($2) : ($3)"],
+    "description": "Creates a ternary operator"
+  },
+
+  //special shortcuts
+  "Destructure an array ": {
+    "prefix": "ds array ",
+    "body": ["const [$1] = $CLIPBOARD;"],
+    "description": "Destructure an array "
+  },
+  "Destructure an object ": {
+    "prefix": "ds object",
+    "body": ["const {$1} = $CLIPBOARD;"],
+    "description": "Destructure an object "
+  },
+  "Spread an array ": {
+    "prefix": "spread array",
+    "body": ["[...$CLIPBOARD]"],
+    "description": "Spread an array "
+  },
+  "Spread an object ": {
+    "prefix": "spread object",
+    "body": ["{...$CLIPBOARD}"],
+    "description": "Spread an object"
+  },
+  "Calling an API": {
+    "prefix": "call api",
+    "body": [
+      "fetch(\"$CLIPBOARD\")",
+      ".then((res)=> (res.json()))",
+      ".then((data)=> console.log(data))",
+      ".catch((e)=> console.log(e))"
+    ],
+    "description": "Calls an API"
+  },
+  "store a variable": {
+    "prefix": "store",
+    "body": ["const ${1:variableName} = ${CLIPBOARD};"],
+    "description": "store a variable"
+  },
+  "Mapped component": {
+    "prefix": "create mapped component",
+    "body": [
+      "{${CLIPBOARD}.map((element)=> (",
+      "<div className=\"$1\" key={element.id}>",
+      "$2",
+      " </div>",
+      "))}"
+    ],
+    "description": "Creates a mapped component"
   }
 }
