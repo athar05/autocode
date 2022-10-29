@@ -1,19 +1,4 @@
 {
-  "array any": {
-    "prefix": "create array",
-    "body": ["const ${1:arrayName}:any[] = [$2];"],
-    "description": "Creates an array of type number"
-  },
-  "variable any": {
-    "prefix": "create variable",
-    "body": ["let  ${1:variableName}: any = ${2:null};"],
-    "description": "Creates variable of type any"
-  },
-  "object": {
-    "prefix": "create object",
-    "body": ["const  ${1:objectName}:{} = $2{};"],
-    "description": "Creates an object"
-  },
   "named function": {
     "prefix": "create named function",
     "body": [
