@@ -2,6 +2,10 @@
 
 All notable changes to the "autocode" extension will be documented in this file.
 
+## [1.0.1]
+
+- Fixed a minor bug that makes the app more stable.
+
 ## [1.0.0]
 
 - Initial release of Autocode snippets.
