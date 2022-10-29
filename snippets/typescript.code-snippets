@@ -1,9 +1,4 @@
 {
-  "array any": {
-    "prefix": "create array",
-    "body": ["const ${1:arrayName}:any[] = [$2];"],
-    "description": "Creates an array of type number"
-  },
   "array of numbers": {
     "prefix": "create array of type numbers",
     "body": ["const ${1:arrayName}:number[] = [${2: 1},${3: 2},${4: 3}];"],
@@ -20,11 +15,6 @@
     "prefix": "create array of type object",
     "body": ["const ${1:arrayName}:{$2}[] = [${3:{}}];"],
     "description": "Creates an array of type object"
-  },
-  "variable any": {
-    "prefix": "create variable",
-    "body": ["let  ${1:variableName}: any = ${2:null};"],
-    "description": "Creates variable of type any"
   },
   "variable of type string": {
     "prefix": "create variable of type string",
@@ -45,5 +35,55 @@
     "prefix": "create object",
     "body": ["const  ${1:objectName}:{} = $2{};"],
     "description": "Creates an object"
+  },
+  "named function": {
+    "prefix": "create named function",
+    "body": [
+      "function ${1:functionName}(${2: params:type}) {",
+      "$3",
+      "return $4",
+      "}"
+    ],
+    "description": "creates a named function"
+  },
+  "function expression": {
+    "prefix": "create function expression",
+    "body": [
+      "const ${1:functionName} = function(${2: params:type}) {",
+      "$3",
+      "return $4",
+      "}"
+    ],
+    "description": "Creates a function expression"
+  },
+  "arrow function": {
+    "prefix": "create arrow function",
+    "body": [
+      "const ${1:functionName} = (${2: params:type})=> {",
+      "$3",
+      "return $4",
+      "}"
+    ],
+    "description": "Creates an arrow function"
+  },
+  "async arrow function": {
+    "prefix": "create async arrow function",
+    "body": [
+      "const ${1:functionName} = async(${2:params:type})=> {",
+      "$3",
+      "return $4",
+      "}"
+    ],
+    "description": "Creates an async arrow function"
+  },
+  "async function": {
+    "prefix": "create async function",
+    "body": [
+      "async function ${1:functionName}(${2:params:type}) {",
+      "$3",
+      "return $4",
+      "}"
+    ],
+    "description": "Creats an async function"
   }
 }
