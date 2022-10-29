@@ -1,0 +1,34 @@
+{
+  "array of numbers": {
+    "prefix": "create array of type numbers",
+    "body": ["const ${1:arrayName}:number[] = [${2: 1},${3: 2},${4: 3}];"],
+    "description": "Creates an array of type number"
+  },
+  "array of strings": {
+    "prefix": "create array of type strings",
+    "body": [
+      "const ${1:arrayName}:string[] = [${2:'one'},${3:'two'},${4:'three'}; ]"
+    ],
+    "description": "Creates an array of type string"
+  },
+  "array of object": {
+    "prefix": "create array of type object",
+    "body": ["const ${1:arrayName}:{$2}[] = [${3:{}}];"],
+    "description": "Creates an array of type object"
+  },
+  "variable of type string": {
+    "prefix": "create variable of type string",
+    "body": ["let  ${1:variableName}: string = \"$2\";"],
+    "description": "Creates variable of type string"
+  },
+  "variable of type number": {
+    "prefix": "create variable of type number",
+    "body": ["let  ${1:variableName}: number = ${2:1};"],
+    "description": "Creates variable of type number"
+  },
+  "variable of type boolean": {
+    "prefix": "create variable of type boolean",
+    "body": ["let  ${1:variableName}: boolean = ${2:false};"],
+    "description": "Creates variable of type boolean"
+  }
+}
